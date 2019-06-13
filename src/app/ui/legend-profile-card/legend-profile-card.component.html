@@ -1,0 +1,50 @@
+<div class="card" *ngIf="userProfile">
+  <div class="card-body">
+    <div class="profile-pic">
+      <img 
+        src="{{userProfile.image || './assets/images/profile.png'}}"
+        alt="{{ userProfile.fn + ' profile picture'}}" 
+        class="rounded-circle" 
+        default-image
+      />
+    </div>
+    <div class="text-center mb-4">
+      <h2 class="fn">{{userProfile.fn || 'Name is not defined'}}</h2>
+      <p *ngIf="userProfile.role">{{userProfile.role}}</p>
+      <div *ngIf="authWebId === userProfile.webId">
+        <button class="btn btn-warning" [routerLink]="['/card']">
+          <i class="fas fa-cogs"></i> Edit</button>
+      </div>
+      <div class="btn-line">
+        <button
+            *ngIf="authWebId !== userProfile.webId && isFollowed"
+            class="btn btn-warning"
+            (click)="followToggle()"
+        >Unfollow</button>
+        <button
+            *ngIf="authWebId !== userProfile.webId && !isFollowed"
+            class="btn btn-success"
+            (click)="followToggle()"
+        >Follow</button>
+        <button
+            *ngIf="authWebId !== userProfile.webId && !isFriend"
+            class="btn btn-success"
+            (click)="friendToggle()"
+            title="Ask user to show you his/her private reviews"
+        >Add in friend</button>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-sm-6">
+        <p class="card-follow text-muted">
+          <span class="align-middle">Following</span><br>
+          <span class="value align-middle">{{userProfile.following || 0}}</span></p>
+      </div>
+      <div class="col-sm-6">
+        <p class="card-follow text-muted">
+          <span class="align-middle">Followers</span><br>
+          <span class="value align-middle">{{userProfile.followed || 0}}</span></p>
+      </div>
+    </div>
+  </div>
+</div>

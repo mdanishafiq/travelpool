@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/home']">Travelpool</a>
+    <button class="navbar-toggler" type="button"
+            (click)="toggleCollapse()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse"
+         [class.show]="show">
+      <ul class="navbar-nav ml-auto" *ngIf="isLogged">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/reviews'" [routerLinkActive]="['active']">
+            Dashboard</a>
+        </li>
+<!--
+        <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle>
+            Create
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+            <a class="dropdown-item"
+               [routerLink]="'/create-review'"
+               [queryParams]="{type: 'hotel'}"
+            >Hotel Review</a>
+            <a class="dropdown-item"
+               [routerLink]="'/create-review'"
+               [queryParams]="{type: 'restaurant'}"
+            >Restaurant Review</a>
+          </div>
+        </li>
+-->
+        <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle>
+            <div class="thumb"><img src="{{ authUser && authUser.image ? authUser.image : 'assets/images/profile.png'}}" class="rounded-circle"></div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+            <a class="dropdown-item" [routerLink]="'/usertimeline'" [queryParams]="{webId: authUser? authUser.webId : null}" [routerLinkActive]="['active']">
+              <i class="fas fa-user-circle"></i> My Profile</a>
+<!--
+            <a class="dropdown-item" [routerLink]="'/following-list'" [queryParams]="{webId: authUser? authUser.webId : null}" [routerLinkActive]="['active']">
+              <i class="fas fa-users"></i> Following</a>
+-->
+<!--
+            <a class="dropdown-item" [routerLink]="'/friends'" [queryParams]="{webId: authUser? authUser.webId : null}" [routerLinkActive]="['active']"><i class="fas fa-users"></i> Friends</a>
+-->
+            <a class="dropdown-item" [routerLink]="'/card'" [routerLinkActive]="['active']">
+              <i class="fas fa-cogs"></i> Settings</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="" (click)="logout()">
+              <i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto" *ngIf="!isLogged">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/login'" [routerLinkActive]="['active']">
+            Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

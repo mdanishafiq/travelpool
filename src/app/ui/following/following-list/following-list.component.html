@@ -1,0 +1,99 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+		<h1>Add New Friends</h1>
+      <div class="card card-sticky">
+        <div class="card-body">
+			
+			<h6 class="mb-3">Suggested friends:</h6>
+          <app-profile-item *ngFor="let item of sugestedList;" [profile]="item">
+            <button
+              class="btn btn-sm align-self-auto btn-success"
+              (click)="sendRequest(item)"
+            >Request</button>
+          </app-profile-item>
+<!--
+			<p>Want to add new friends? Just send them an email with the text below:</p>
+			<pre>Hello,
+Check out Travelpool, an app to share travel tips between friends!
+You can find it here https://solidsocialapp.herokuapp.com/ 
+To see my travel tips, add me as a friend using my web ID: 
+
+      {{authUser.webId}}
+
+Looking forward to share travel tips with you!</pre>
+-->
+
+		<p>If you know your friends' WebID, use the box below</p>
+
+          <form [formGroup]="findForm">
+            <div class="input-group mb-4">
+              <input type="text" class="form-control" placeholder="Web ID" formControlName="webId"
+              [class.is-invalid]="isBad">
+              <div class="input-group-append">
+                <button class="btn"
+                [ngClass]="isBad?'btn-danger':'btn-info'"
+                (click)="findFriend()">
+
+                  <i class="fas">Request</i></button>
+
+              </div>
+            </div>
+          </form>
+          
+<!--
+          <h6 class="mb-3">Suggested friends:</h6>
+          <app-profile-item *ngFor="let item of sugestedList;" [profile]="item">
+            <button
+              class="btn btn-sm align-self-auto btn-success"
+              (click)="sendRequest(item)"
+            >Request</button>
+          </app-profile-item>
+-->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+		<h1>Invite friends via Email</h1>
+      <div class="card">
+        <div class="card-body">
+			
+			<p>Want to add new friends? Just send them an email with the text below:</p>
+			<pre>Hello,
+Check out Travelpool, an app to share travel tips between friends!
+You can find it here https://solidsocialapp.herokuapp.com/ 
+To see my travel tips, add me as a friend using my web ID: 
+
+      {{authUser.webId}}
+
+Looking forward to share travel tips with you!</pre>
+<!--
+          <h6 class="mb-3">Following list:</h6>
+          <app-profile-item *ngFor="let item of followingList;" [profile]="item">
+            <div class="btn-line">
+              <button 
+                *ngIf="isAbbleToSendRequest[item.webId]"
+                class="btn btn-sm align-self-auto btn-light" 
+                (click)="sendRequest(item)"
+              >Ask permission to read private reviews</button>
+              <button
+                class="btn btn-sm align-self-auto btn-light"
+                (click)="unFollowUser(item)"
+              >Unfollow</button>  
+
+            </div>
+          </app-profile-item>
+          -->
+        </div>
+      </div>
+      <br/>
+      <div style="text-align:center"><em><button [routerLink]="'/create-review'"><h1>Write a new review</h1></button></em></div>
+
+
+      
+    </div>
+  </div>
+</div>
+<!--     document.write("@@", this.authUser.webId);
+-->

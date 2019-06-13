@@ -1,0 +1,12 @@
+.card-sticky{
+    position: sticky;
+    top: 5.9rem;
+    margin: 0 0 2rem 0;
+}
+
+.button{
+	font-family: arial;
+	text-align: center;
+	margin: auto;
+	
+}

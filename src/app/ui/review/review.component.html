@@ -1,0 +1,59 @@
+	
+<div class="card">
+  <div class="card-body">
+    <div class="close-icon" *ngIf="authUser && model.author.webId === authUser.webId">
+      <button class="btn btn-link" type="button" (click)="remove()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="float-left thumb">
+          <img 
+            src="{{ model.author.image || 'assets/images/profile.png'}}" 
+            class="rounded-circle" 
+            default-image
+          />
+        </div>
+        <div class="review-action mb-3">
+			<a [routerLink]="['/reviews']"
+                                        [queryParams]="{query: model.thing ? model.thing.name : ''}">
+            {{model.thing ? model.thing.name : ''}}</a>
+            <p>
+            Rated by
+          <a [routerLink]="'/usertimeline'" [queryParams]="{webId: model.author.webId }">{{ model.author.fn }}</a>
+          <span class="review-object">
+            
+            <span *ngIf="model.thing"> in <a [routerLink]="['/reviews']"
+            [queryParams]="{ query: model.thing.address.getLocality()}">
+            {{model.thing.address.getLocality()}}</a></span>
+            
+            <p class="small text-muted">{{model.creationDate | timePassed}}</p>
+
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="text-warning text-center">
+          <span *ngFor="let number of [1,2,3,4,5]">
+            <i [class]="model.rating >= number? 'fas fa-star': 'far fa-star'"></i>
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h5 class="medium text-center">{{model.summary}}</h5>
+        <p class= "medium text-center">{{model.text}}</p>
+      </div>
+    </div>
+    
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-sm-6"><h6 class="text-danger m-sm-0">Average:</h6></div>
+      <div class="col-sm-6"><h6 class="text-info text-sm-right m-sm-0">N friends were there</h6></div>
+    </div>
+    <!--{{model | json: "\n"}}-->
+  </div>
+</div>
+
