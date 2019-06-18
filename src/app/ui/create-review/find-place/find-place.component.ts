@@ -9,7 +9,7 @@ import {PhotonInterface} from '../../../models/photon-interface.model';
   selector: 'app-find-place',
   templateUrl: './find-place.component.html',
   providers: [PhotonService],
-  styleUrls: ['./find-place.component.css']
+  //styleUrls: ['./find-place.component.css']
 })
 export class FindPlaceComponent implements OnInit {
   _model: PhotonInterface;
