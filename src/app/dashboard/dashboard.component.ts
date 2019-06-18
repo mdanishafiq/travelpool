@@ -18,7 +18,7 @@ import { PhotonInterface } from '../models/photon-interface.model';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.sass']
 })
 export class DashboardComponent implements OnInit {
   profileLinks: string[];
