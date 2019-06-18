@@ -21,7 +21,7 @@ interface IVisibilityOption {
 @Component({
   selector: 'app-new-review',
   templateUrl: './new-review.component.html',
-  styleUrls: ['./new-review.component.css']
+  //styleUrls: ['./new-review.component.css']
 })
 export class NewReviewComponent implements OnInit {
   private sub: Subscription;
