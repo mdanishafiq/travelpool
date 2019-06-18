@@ -11,7 +11,7 @@ import { SolidSession } from 'src/app/models/solid-session.model';
 @Component({
   selector: 'app-legend',
   templateUrl: './legend.component.html',
-  styleUrls: ['./legend.component.css']
+  //styleUrls: ['./legend.component.css']
 })
 export class LegendComponent implements OnInit {
 
