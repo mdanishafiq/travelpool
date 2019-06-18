@@ -4,7 +4,7 @@ declare let popup: any;
 @Component({
   selector: 'app-login-popup',
   templateUrl: './login-popup.component.html',
-  styleUrls: ['./login-popup.component.css']
+  //styleUrls: ['./login-popup.component.css']
 })
 export class LoginPopupComponent implements OnInit {
 
